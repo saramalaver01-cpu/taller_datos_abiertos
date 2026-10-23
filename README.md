@@ -217,6 +217,9 @@ La información obtenida se procesa mediante el servicio correspondiente y se re
 
 **Importante:** el archivo `.env` está excluido del repositorio mediante `.gitignore`. Debe crearse localmente cuando sea necesario y no debe subirse a GitHub.
 
+<img width="640" height="204" alt="image" src="https://github.com/user-attachments/assets/cf2da4d1-1608-4009-9086-75da12454678" />
+
+
 ## 9. Repositorio y flujo de trabajo Git
 
 Repositorio público: [taller_datos_abiertos en GitHub](https://github.com/saramalaver01-cpu/taller_datos_abiertos)
