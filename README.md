@@ -83,7 +83,10 @@ La pantalla principal permite acceder a las funcionalidades de consulta de depar
 
 **Captura del Dashboard:**
 
-![Dashboard de Datos Abiertos de Colombia](screenshots/dashboard.png)
+![Dashboard de Datos Abiertos de Colombia]
+
+<img width="448" height="830" alt="image" src="https://github.com/user-attachments/assets/ba1314da-8ada-4126-a490-f4baa4174ac4" />
+
 
 ### 5.2 Listados de información
 
@@ -91,11 +94,16 @@ Cada sección realiza una consulta a la API y presenta los resultados mediante c
 
 **Captura del listado de departamentos:**
 
-![Listado de departamentos](screenshots/departamentos.png)
+![Listado de departamentos]
+<img width="844" height="394" alt="image" src="https://github.com/user-attachments/assets/ce406f30-3635-44a7-9d61-69898d3fea28" />
+
 
 **Captura de otro listado, como regiones, presidentes o turismo:**
 
-![Listado de información de la API](screenshots/listados.png)
+![Listado de información de la API]
+<img width="848" height="396" alt="image" src="https://github.com/user-attachments/assets/9670c9a9-d79d-438b-bd49-9f6ed388c5f2" />
+<img width="842" height="398" alt="image" src="https://github.com/user-attachments/assets/16b7db2a-7e18-4b29-b0b8-50ae6d993281" />
+<img width="844" height="402" alt="image" src="https://github.com/user-attachments/assets/7d588954-c6b6-42a5-88f7-b09f813fd56f" />
 
 ### 5.3 Detalle de un departamento
 
@@ -105,7 +113,9 @@ La navegación se realiza con `go_router`, pasando el ID en la ruta y el objeto 
 
 **Captura del detalle de un departamento:**
 
-![Detalle de un departamento](screenshots/detalle_departamento.png)
+![Detalle de un departamento]
+<img width="846" height="394" alt="image" src="https://github.com/user-attachments/assets/d822118c-80d7-4f2e-86a9-04688274b3a0" />
+
 
 ### 5.4 Manejo de estados
 
@@ -115,16 +125,6 @@ La aplicación contempla diferentes estados durante las consultas a la API:
 - **Éxito:** presenta los datos obtenidos cuando la consulta finaliza correctamente.
 - **Error:** muestra un mensaje cuando la solicitud falla y ofrece la posibilidad de intentar nuevamente en las pantallas que implementan esta opción.
 - **Sin resultados:** informa cuando no hay elementos disponibles para mostrar.
-
-**Captura del estado de carga:**
-
-![Estado de carga](screenshots/estado_carga.png)
-
-**Captura del estado de error:**
-
-![Estado de error](screenshots/estado_error.png)
-
-> Las imágenes anteriores son referencias a archivos que deben agregarse a la carpeta `screenshots/`. Para que se visualicen en GitHub, guarda allí las capturas reales con los nombres indicados.
 
 ## 6. Navegación con go_router
 
@@ -216,8 +216,6 @@ La información obtenida se procesa mediante el servicio correspondiente y se re
    ```
 
 **Importante:** el archivo `.env` está excluido del repositorio mediante `.gitignore`. Debe crearse localmente cuando sea necesario y no debe subirse a GitHub.
-
-<img width="640" height="204" alt="image" src="https://github.com/user-attachments/assets/cf2da4d1-1608-4009-9086-75da12454678" />
 
 
 ## 9. Repositorio y flujo de trabajo Git
