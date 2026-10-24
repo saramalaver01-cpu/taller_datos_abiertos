@@ -2,13 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:go_router/go_router.dart';
 
-import 'views/tourism_page.dart';
-import 'views/presidents_page.dart';
+import 'models/department.dart';
+
 import 'views/home_page.dart';
 import 'views/departments_page.dart';
-import 'views/regions_page.dart';
 import 'views/department_detail_page.dart';
-import 'models/department.dart';
+import 'views/regions_page.dart';
+import 'views/region_detail_page.dart';
+import 'views/presidents_page.dart';
+import 'views/tourism_page.dart';
+import 'views/president_detail_page.dart';
+import 'views/tourism_detail_page.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -44,20 +48,16 @@ class ColombiaApp extends StatelessWidget {
 final GoRouter _router = GoRouter(
   initialLocation: '/',
   routes: [
+    // Menú principal
     GoRoute(path: '/', builder: (context, state) => const HomePage()),
+
+    // Lista de departamentos
     GoRoute(
       path: '/departamentos',
       builder: (context, state) => const DepartmentsPage(),
     ),
-    GoRoute(
-      path: '/regiones',
-      builder: (context, state) => const RegionsPage(),
-    ),
-    GoRoute(
-      path: '/presidentes',
-      builder: (context, state) => const PresidentsPage(),
-    ),
-    GoRoute(path: '/turismo', builder: (context, state) => const TourismPage()),
+
+    // Detalle de departamento
     GoRoute(
       path: '/departamentos/:id',
       builder: (context, state) {
@@ -66,22 +66,46 @@ final GoRouter _router = GoRouter(
         return DepartmentDetailPage(department: department);
       },
     ),
+
+    // Lista de regiones
+    GoRoute(
+      path: '/regiones',
+      builder: (context, state) => const RegionsPage(),
+    ),
+
+    // Detalle de región
+    GoRoute(
+      path: '/regiones/:id',
+      builder: (context, state) {
+        final region = state.extra as Map<String, dynamic>;
+
+        return RegionDetailPage(region: region);
+      },
+    ),
+
+    // Lista de presidentes
+    GoRoute(
+      path: '/presidentes',
+      builder: (context, state) => const PresidentsPage(),
+    ),
+
+    // Lista de atractivos turísticos
+    GoRoute(path: '/turismo', builder: (context, state) => const TourismPage()),
+    GoRoute(
+      path: '/presidentes/:id',
+      builder: (context, state) {
+        final president = state.extra as Map<String, dynamic>;
+
+        return PresidentDetailPage(president: president);
+      },
+    ),
+    GoRoute(
+      path: '/turismo/:id',
+      builder: (context, state) {
+        final attraction = state.extra as Map<String, dynamic>;
+
+        return TourismDetailPage(attraction: attraction);
+      },
+    ),
   ],
 );
-
-class HomePlaceholder extends StatelessWidget {
-  const HomePlaceholder({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('Datos Abiertos de Colombia')),
-      body: const Center(
-        child: Text(
-          '¡Bienvenido a Colombia!',
-          style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-        ),
-      ),
-    );
-  }
-}

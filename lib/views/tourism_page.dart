@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import '../services/api_service.dart';
-
-import 'package:go_router/go_router.dart';
 
 class TourismPage extends StatefulWidget {
   const TourismPage({super.key});
@@ -35,7 +34,7 @@ class _TourismPageState extends State<TourismPage> {
         title: const Text('Atractivos turísticos'),
         leading: IconButton(
           icon: const Icon(Icons.home),
-          tooltip: 'Volver al menú',
+          tooltip: 'Volver al menú principal',
           onPressed: () {
             context.go('/');
           },
@@ -94,9 +93,12 @@ class _TourismPageState extends State<TourismPage> {
                   'Descripción no disponible';
 
               final cityData = attraction['city'];
+
               final city = cityData is Map
                   ? cityData['name']?.toString() ?? ''
                   : '';
+
+              final attractionId = attraction['id']?.toString() ?? '$index';
 
               return Card(
                 margin: const EdgeInsets.only(bottom: 12),
@@ -118,6 +120,10 @@ class _TourismPageState extends State<TourismPage> {
                     ),
                   ),
                   isThreeLine: true,
+                  trailing: const Icon(Icons.chevron_right),
+                  onTap: () {
+                    context.push('/turismo/$attractionId', extra: attraction);
+                  },
                 ),
               );
             },

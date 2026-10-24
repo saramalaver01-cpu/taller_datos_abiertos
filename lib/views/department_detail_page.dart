@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import '../models/department.dart';
 
@@ -10,7 +11,16 @@ class DepartmentDetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(department.name)),
+      appBar: AppBar(
+        title: Text(department.name),
+        leading: IconButton(
+          icon: const Icon(Icons.home),
+          tooltip: 'Volver al menú',
+          onPressed: () {
+            context.go('/');
+          },
+        ),
+      ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(20),
         child: Column(
