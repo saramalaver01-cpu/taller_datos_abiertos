@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import '../services/api_service.dart';
-
-import 'package:go_router/go_router.dart';
 
 class RegionsPage extends StatefulWidget {
   const RegionsPage({super.key});
@@ -29,7 +28,7 @@ class _RegionsPageState extends State<RegionsPage> {
         title: const Text('Regiones'),
         leading: IconButton(
           icon: const Icon(Icons.home),
-          tooltip: 'Volver al menú',
+          tooltip: 'Volver al menú principal',
           onPressed: () {
             context.go('/');
           },
@@ -51,7 +50,10 @@ class _RegionsPageState extends State<RegionsPage> {
                   children: [
                     const Icon(Icons.error_outline, size: 48),
                     const SizedBox(height: 12),
-                    const Text('No se pudieron cargar las regiones.'),
+                    const Text(
+                      'No se pudieron cargar las regiones.',
+                      textAlign: TextAlign.center,
+                    ),
                     const SizedBox(height: 12),
                     ElevatedButton(
                       onPressed: () {
@@ -92,6 +94,12 @@ class _RegionsPageState extends State<RegionsPage> {
                     maxLines: 3,
                     overflow: TextOverflow.ellipsis,
                   ),
+                  trailing: const Icon(Icons.chevron_right),
+                  onTap: () {
+                    final regionId = region['id']?.toString() ?? '$index';
+
+                    context.push('/regiones/$regionId', extra: region);
+                  },
                 ),
               );
             },

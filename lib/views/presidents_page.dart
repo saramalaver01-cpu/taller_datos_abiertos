@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import '../services/api_service.dart';
-
-import 'package:go_router/go_router.dart';
 
 class PresidentsPage extends StatefulWidget {
   const PresidentsPage({super.key});
@@ -35,13 +34,12 @@ class _PresidentsPageState extends State<PresidentsPage> {
         title: const Text('Presidentes'),
         leading: IconButton(
           icon: const Icon(Icons.home),
-          tooltip: 'Volver al menú',
+          tooltip: 'Volver al menú principal',
           onPressed: () {
             context.go('/');
           },
         ),
       ),
-
       body: FutureBuilder<List<Map<String, dynamic>>>(
         future: _presidentsFuture,
         builder: (context, snapshot) {
@@ -91,9 +89,9 @@ class _PresidentsPageState extends State<PresidentsPage> {
                   )
                   .join(' ');
 
-              final start = president['startPeriodDate'] ?? '';
-              final end = president['endPeriodDate'] ?? '';
-              final party = president['politicalParty'] ?? '';
+              final start = president['startPeriodDate']?.toString() ?? '';
+              final end = president['endPeriodDate']?.toString() ?? '';
+              final party = president['politicalParty']?.toString() ?? '';
 
               return Card(
                 margin: const EdgeInsets.only(bottom: 12),
@@ -108,11 +106,18 @@ class _PresidentsPageState extends State<PresidentsPage> {
                   subtitle: Padding(
                     padding: const EdgeInsets.only(top: 6),
                     child: Text(
-                      'Periodo: $start - $end\n'
-                      'Partido: ${party.toString().isEmpty ? "No disponible" : party}',
+                      'Periodo: ${start.isEmpty ? "No disponible" : start}'
+                      ' - ${end.isEmpty ? "No disponible" : end}\n'
+                      'Partido: ${party.isEmpty ? "No disponible" : party}',
                     ),
                   ),
                   isThreeLine: true,
+                  trailing: const Icon(Icons.chevron_right),
+                  onTap: () {
+                    final presidentId = president['id']?.toString() ?? '$index';
+
+                    context.push('/presidentes/$presidentId', extra: president);
+                  },
                 ),
               );
             },
